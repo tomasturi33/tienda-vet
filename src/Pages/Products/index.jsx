@@ -6,6 +6,7 @@ import '../../App.css'
 function Products() {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState(null)
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/products`)
@@ -37,9 +38,19 @@ function Products() {
         ) : (
           <div>
             <div class="relative overflow-x-auto">
-              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
+
+              <div className='mb-8 flex justify-start'>
+                <button 
+                  className="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" 
+                  type="button"
+                  onClick={() => setIsOpen(true)}>
+                  Crear Producto
+                </button>
+              </div>
+
+              <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead className="text-sm font-semibold text-gray-600 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600 tracking-wider hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300">
+                   <tr>
                     <th scope="col" class="px-6 py-3">
                       Producto
                     </th>
@@ -81,6 +92,36 @@ function Products() {
                 }
                 </tbody>
               </table>
+
+              <div
+                className={`fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 z-50 ${
+                  isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                }`}>
+                {/* Modal */}
+                <div
+                  className={`bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-96 transform transition-all duration-300 ${
+                    isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                  }`}
+                >
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    Nuevo Producto
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-300 mt-2">
+                    Agrega una nueva categoría a la lista.
+                  </p>
+
+                  {/* Botón para cerrar */}
+                  <div className="mt-4 flex justify-end">
+                    <button
+                      className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Cerrar
+                    </button>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         )}
