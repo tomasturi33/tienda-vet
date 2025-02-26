@@ -58,7 +58,6 @@ function Home() {
     setIsOpen(false);
   };
   
-
   return (
     <div className="p-4 sm:ml-64">
       <div className="p-4 mt-14">
