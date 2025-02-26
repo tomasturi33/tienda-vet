@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react' 
 import Icon from '@mdi/react';
-import { mdiEye, mdiPencil } from '@mdi/js';
+import { mdiEye, mdiPencil, mdiTrashCan } from '@mdi/js';
 import '../../App.css'
 
 function Products() {
@@ -79,12 +79,16 @@ function Products() {
                         ${ item.price }
                       </th>
                       <td className="flex py-3 justify-center">
-                        <button className="w-7 h-7 flex items-center justify-center bg-blue-500 hover:bg-blue-400 text-white rounded-full mr-1">
+                        <button className="mr-1 ml-1 w-7 h-7 flex items-center justify-center bg-blue-500 hover:bg-blue-400 text-white rounded-full">
                           <Icon path={mdiEye} size={0.6} />
                         </button>
 
-                        <button className="w-7 h-7 flex items-center justify-center bg-yellow-400 hover:bg-yellow-300 text-black rounded-full">
+                        <button className="mr-1 ml-1 w-7 h-7 flex items-center justify-center bg-yellow-400 hover:bg-yellow-300 text-black rounded-full">
                           <Icon path={mdiPencil} size={0.6} />
+                        </button>
+
+                        <button className="mr-1 ml-1 w-7 h-7 flex items-center justify-center bg-red-400 hover:bg-red-300 text-white rounded-full">
+                          <Icon path={mdiTrashCan} size={0.6} />
                         </button>
                       </td>
                     </tr> 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react' 
 import Icon from '@mdi/react';
-import { mdiPencil } from '@mdi/js';
+import { mdiPencil, mdiTrashCan } from '@mdi/js';
 import '../../App.css'
 
-function Home() {
+function Category() {
   const [loading, setLoading] = useState(true);
   const [sendSubmit, setSendSubmit] = useState(false);
   const [items, setItems] = useState(null)
@@ -23,6 +23,17 @@ function Home() {
         setLoading(false);
       });
   }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/categories`);
+      console.log(response)
+      const data = await response.json();
+      setItems(data);
+    } catch (error) {
+      console.error("Error al obtener categorías:", error);
+    }
+};
 
   const handleSubmit = () => {
     if (categoryName.trim() === "") return;
@@ -46,7 +57,7 @@ function Home() {
       }
   
       const data = await response.json();
-      console.log("Categoría agregada:", data);
+      fetchCategories();
       closeModal();
     } catch (error) {
       console.error("Error:", error);
@@ -87,6 +98,9 @@ function Home() {
               <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-sm font-semibold text-gray-600 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600 tracking-wider hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300">
                   <tr>
+                    <th scope="col" className="px-6 py-3 w-10">
+                      #ID
+                    </th>
                     <th scope="col" className="px-6 py-3">
                       Categorias productos
                     </th>
@@ -106,11 +120,21 @@ function Home() {
                         scope="row"
                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
+                        {item.id}
+                      </th>
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      >
                         {item.name}
                       </th>
                       <td className="flex py-3 justify-center">
-                        <button className="w-7 h-7 flex items-center justify-center bg-yellow-400 hover:bg-yellow-300 text-black rounded-full">
+                        <button className="mr-1 ml-1 w-7 h-7 flex items-center justify-center bg-yellow-400 hover:bg-yellow-300 text-black rounded-full">
                           <Icon path={mdiPencil} size={0.6} />
+                        </button>
+
+                        <button className="mr-1 ml-1 w-7 h-7 flex items-center justify-center bg-red-400 hover:bg-red-300 text-white rounded-full">
+                          <Icon path={mdiTrashCan} size={0.6} />
                         </button>
                       </td>
                     </tr>
@@ -198,4 +222,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Category

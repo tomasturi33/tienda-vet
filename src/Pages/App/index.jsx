@@ -31,10 +31,14 @@ const AppRoutes = () => {
 function App() {
   return (
     <>
-    <BrowserRouter style={{ margin: '200px 200px 200px 200px', }}>
+    <BrowserRouter style={{ margin: '200px 200px 200px 200px' }}>
       <Sidebar />
       <Navbar />
-      <AppRoutes />
+      <div 
+        className="min-h-screen"
+        style={{ backgroundColor: "#F0F2F5" }}>
+        <AppRoutes />
+      </div>
     </BrowserRouter>
     </>
   )

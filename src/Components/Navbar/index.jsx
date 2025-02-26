@@ -4,7 +4,9 @@ const Navbar = () => {
   const activeStyle = 'underline underline-offset-4'
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-black/10 backdrop-blur-md border-b border-white/20 shadow-md">
+    <nav 
+      className="fixed top-0 z-50 w-full border-b border-white/20 shadow-md"
+      style={{ backgroundColor: "#0078D7" }}>
       <div className="px-3 py-4 lg:px-5 lg:pl-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start rtl:justify-end">
@@ -15,43 +17,14 @@ const Navbar = () => {
                 </svg>
             </button>
             <a href="https://flowbite.com" className="flex ms-2 md:me-24">
-              <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 me-3" alt="FlowBite Logo" />
-              <span className="self-center text-xl  sm:text-2xl whitespace-nowrap text-black ml-2"> Veterinaria 25 de Mayo</span>
+              <img 
+                src="https://img.freepik.com/vector-premium/cruz-medica-redonda-icono-medios-sobre-fondo-blanco-vector_532963-3483.jpg" 
+                className="h-10 w-10 rounded-full me-3 object-cover" 
+                alt="FlowBite Logo" />
+              <span className="self-center text-xl  sm:text-2xl whitespace-nowrap text-white ml-2"> Veterinaria 25 de Mayo</span>
             </a>
           </div>
-          <div className="flex items-center">
-              <div className="flex items-center ms-3">
-                <div>
-                  <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                    <span className="sr-only">Open user menu</span>
-                  </button>
-                </div>
-                <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
-                  <div className="px-4 py-3" role="none">
-                    <p className="text-sm text-gray-900 dark:text-white" role="none">
-                      Neil Sims
-                    </p>
-                    <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                      neil.sims@flowbite.com
-                    </p>
-                  </div>
-                  <ul className="py-1" role="none">
-                    <li>
-                      <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Home</a>
-                    </li>
-                    <li>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
-                    </li>
-                    <li>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
-                    </li>
-                    <li>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+
         </div>
       </div>
     </nav>
