@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react' 
-import Card from '../../Components/Card'
+import Icon from '@mdi/react';
+import { mdiPencil } from '@mdi/js';
 import '../../App.css'
 
 function Home() {
@@ -7,7 +8,7 @@ function Home() {
   const [items, setItems] = useState(null)
 
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products')
+    fetch(`${import.meta.env.VITE_API_URL}/categories`)
       .then((response) => response.json())
       .then((data) => {
         // Procesar las imágenes para convertir strings JSON en arrays reales
@@ -34,21 +35,41 @@ function Home() {
             </div>
           </div>
         ) : (
-          <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
-            {
-              items && items.map(item => (
-                <Card key={item.id} data={item} />
-              ))
-            }
+          <div>
+            <div class="relative overflow-x-auto">
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      Categorias productos
+                    </th>
+                    <th scope="col" class="flex py-3 justify-center">
+                        Acciones
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                {
+                  items && items.map(item => (
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          { item.name }
+                      </th>
+                      <td className="flex py-3 justify-center">
+                        <button className="w-7 h-7 flex items-center justify-center bg-yellow-400 hover:bg-yellow-300 text-black rounded-full">
+                          <Icon path={mdiPencil} size={0.6} />
+                        </button>
+                      </td>
+                    </tr> 
+                  ))
+                }
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
 
       </div>
-      {/* <pre>
-        {
-          items ? JSON.stringify(items, null, 2) : "Loading..."
-        }
-      </pre> */}
     </div>
   )
 }

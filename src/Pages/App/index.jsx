@@ -1,5 +1,8 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom'
 import Home from '../Home'
+import Categories from '../Categories'
+import Products from '../Products'
+import Users from '../Users'
 import MyAccount from '../MyAccount'
 import MyOrder from '../MyOrder'
 import MyOrders from '../MyOrders'
@@ -12,6 +15,9 @@ import '../../App.css'
 const AppRoutes = () => {
   let routes = useRoutes([
     { path: '/', element: <Home /> },
+    { path: '/products', element: <Products /> },
+    { path: '/categories', element: <Categories /> },
+    { path: '/users', element: <Users /> },
     { path: '/my-account', element: <MyAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
